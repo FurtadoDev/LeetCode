@@ -64,4 +64,43 @@ public:
     return head;
         
     }
+	
+	void freeList(struct ListNode* head) {
+    struct ListNode* temp;
+    while (head != nullptr) {
+        temp = head;
+        head = temp->next;
+        free(temp);
+    }
+}
+
+
+struct ListNode* createList(vector<int> v) {
+    struct ListNode* head = nullptr;
+    struct ListNode* temp = nullptr;
+
+    if (v.size() >= 1) {
+        head = new ListNode(v[0]);
+        temp = head;
+        int i = 1;
+        while (i < v.size()) {
+            temp->next = new ListNode(v[i]);
+            temp = temp->next;
+            i++;
+        }
+    }
+        
+    return head;
+}
+
+
+void printList(struct ListNode* head) {
+    struct ListNode* temp;
+    while (head != nullptr) {
+        temp = head;
+        head = temp->next;
+        cout << temp->val << endl;
+    }
+    cout << endl;
+}
 };
